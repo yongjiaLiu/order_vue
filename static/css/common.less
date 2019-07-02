@@ -1,0 +1,274 @@
+
+/**
+    elementUI全局样式修改
+ */
+//small input框
+.el-input--small .el-input__inner{
+    width:165px !important;
+}
+//samll日期单选框
+.date-small-width{
+    width:165px !important;
+}
+.hand{
+    cursor:pointer;
+    padding-right:8px;
+    color: #6a7ffe;
+}
+.hand:hover{
+    color: #6a7ffe;
+}
+
+
+
+/**
+    table表格样式
+ */
+.container-table{
+    background-color: #FFF;
+    border-radius: 10px;
+    .searchFrame{
+        padding:8px 10px 0px 0px;
+        height:auto;
+        .el-form-item{
+            margin-bottom: 8px;
+        }
+        .el-date-editor.el-input, .el-date-editor.el-input__inner{
+            width:100%;
+        }
+        .el-select{
+            width:100% !important;
+        }
+    }
+    .parting-line{
+        width: 100%;
+        height:13px;
+        background-color: #f8f8fa;
+    }
+
+    .page-div{
+        height:80px;
+        text-align: center;
+        padding-top:20px;
+    }
+    .el-table th>.cell{
+        color: #6a7ffe;
+    }
+    .button-div{
+        display: flex;
+        justify-content: flex-end;
+        padding:8px 35px 0px 35px;
+        height:45px;
+    }
+
+
+}
+
+/**
+    lialog样式
+ */
+.lialog-form{
+    .lialog-input-width input,.el-textarea{
+        width:100%;
+    }
+    .textarea-height el-textarea__inner{
+        height:100px;
+    }
+    .el-dialog__header{
+        background-color: #66b1ff;
+    }
+    .el-dialog__title{
+        color: #FFF;
+    }
+    .el-select{
+        width:100%;
+    }
+    .el-date-editor.el-input, .el-date-editor.el-input__inner{
+        width:100%;
+    }
+
+}
+/**
+   配置table表格的样式
+ */
+.configuration-div{
+    color:#606266;
+    .configuration-created{
+        float:right;
+        margin-right:20px;
+        margin-bottom:10px;
+    }
+    .configuration-top{
+        height:auto;
+        padding:5px 20px;
+        margin-bottom: 0px;
+        border-radius: 8px;
+        display: flex;
+        .configuration-top-row{
+            font-size: 14px;
+            width: 50%;
+            p{
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .configuration-table{
+        border-right:1px solid #dcdfe6;border-bottom:1px solid #dcdfe6;
+        width:100%;
+        font-size: 14px;
+        td{
+            height:40px;
+            border-left:1px solid #dcdfe6;border-top:1px solid #dcdfe6;
+            padding:4px 10px 4px 10px;
+
+        }
+        .ct-content{
+            font-weight: 600;
+            width:80%;
+        }
+        .ct-operation{
+            text-align:center;
+        }
+        .ct-child{
+            padding-left:50px;
+        }
+    }
+}
+.create_dalog{
+    .el-select{
+        width:100%;
+    }
+}
+.zt-main{
+    .cell{
+        text-align: left !important;
+    }
+    background-color: #FFF;
+    text-align: left;
+    padding:20px 50px;
+    margin-bottom: 2px;
+    .zt-title{
+        border-left:3px solid #638AED;
+        padding-left:5px;
+        height:20px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+    }
+    .zt-table{
+        border-collapse: collapse;
+        margin-top:15px;
+        width: 100%;
+        font-size: 15px;
+        td{
+            border: 1px solid #EAECF3;
+            height:40px;
+        }
+        td img{
+            margin-right:10px;
+            cursor:pointer
+        }
+        .title-table{
+            background-color: #F2F6FF;
+            text-align: center;
+            width: 150px;
+        }
+        .title-content{
+            padding-left: 10px;
+            width:300px;
+        }
+        .kai-hu-zm{
+            height:35px;
+        }
+        .xing{
+            color: red;
+            margin-right: 5px;
+        }
+        .it-style{
+            width: 100%;font-size: 14px;color: #6c7477;
+        }
+        .img-width-height{
+            margin-top:5px;
+            margin-bottom: 5px;
+            margin-right:5px;
+            width:120px;
+        }
+
+    }
+}
+/*添加企业*/
+.add-company-class{
+    .id-card-class{
+        display: flex;
+        .id-card-class-div{
+
+        }
+    }
+    /*.el-upload--picture-card{
+        width:80px;
+        height:80px;
+        line-height: 80px;
+    }
+    .el-upload-list--picture-card .el-upload-list__item{
+        width:80px;
+        height:80px;
+    }*/
+    .el-date-editor.el-input, .el-date-editor.el-input__inner{
+        width:100%;
+    }
+    .el-select{
+        width:100%;
+    }
+    .zt-title{
+        border-left:3px solid #638AED;
+        padding-left:5px;
+        height:20px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        margin:10px 0px 30px 30px;
+    }
+    .buttom-class{
+        text-align: center;margin-top:20px;margin-bottom:10px;
+    }
+
+}
+
+/**
+图片上传
+ */
+.upload-img{
+    display: flex;
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+    }
+    .avatar {
+        width: 80px;
+        height: 80px;
+        display: block;
+    }
+}
+//列表里的查看
+.el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+}
+.el-icon-arrow-down {
+    font-size: 12px;
+}
+
