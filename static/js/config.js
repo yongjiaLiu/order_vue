@@ -2,14 +2,14 @@
     HOST:'http://192.168.1.53:8400'//服务器地址
 } */
 g = {
-	HOST: "http://192.168.1.110:8089", //'http://mumuyx.iok.la', //服务器地址
+	HOST: 'http://mumuyx.iok.la',//"http://192.168.1.166:8089", // //服务器地址
 	sysName: "坦途户外运动-企业运营推广系统平台", //系统名称,
 	routerList: [{
-		icon: 'el-icon-share',
+		icon: 'fa fa-user-o fa-fw',
 		index: '/member/index',
 		title: '会员管理'
 	}, {
-		icon: 'el-icon-share',
+		icon: 'fa fa-user-o fa-fw',
 		index: '/order/index',
 		title: '商品管理',
 		subs: [{
@@ -30,19 +30,19 @@ g = {
 			}
 		]
 	}, {
-		icon: 'el-icon-share',
+		icon: 'fa fa-user-o fa-fw',
 		index: '/article/index',
 		title: '品牌软文'
 	}, {
-		icon: 'el-icon-share',
+		icon: 'fa fa-user-o fa-fw',
 		index: '/active/index',
 		title: '户外活动'
 	}, {
-		icon: 'el-icon-share',
+		icon: 'fa fa-user-o fa-fw',
 		index: '/afterSale/index',
 		title: '售后服务'
 	}, {
-		icon: 'el-icon-share',
+		icon: 'fa fa-user-o fa-fw',
 		index: '/system/index',
 		title: '系统设置',
 		subs: [{

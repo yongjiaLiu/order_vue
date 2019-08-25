@@ -51,6 +51,7 @@
 			},
 			close() { //关闭或者取消
 				let that = this;
+				this.dialogVisible = false
 			}
 
 		}

@@ -325,7 +325,8 @@ export const order = {
 			publicProps: {
 				value: "code",
 				label: "name",
-				children: "categories"
+				children: "categories",
+				checkStrictly:true
 			},
 			array: []
 		},
@@ -368,7 +369,7 @@ export const order = {
 			type: 10,
 			changes: isNull,
 			message: "请输入500字以内的详情",
-		},
+		}/* ,
 		descPic:{
 			label: "详情",
 			error: false,
@@ -376,7 +377,7 @@ export const order = {
 			modelType: "descPic",
 			prop: "descPic",
 			type: 9,
-		}
+		} */
 	},
 	/**
 	 * @列表对象

@@ -6,20 +6,29 @@
 			<i v-else class="el-icon-plus avatar-uploader-icon"></i>
 		</el-upload>
 		<img :id="randId" style="display: none;" :src="imageUrl" :preview="randId">
-		<el-button v-if="imageUrl != 'static/img/mrt.png'" type="text" @click="blowUp" style="margin-left:10px;margin-bottom: 20px;">查看大图</el-button>
+		<!-- <el-button v-if="imageUrl != 'static/img/mrt.png'" type="text" @click="blowUp" style="margin-left:10px;margin-bottom: 20px;">查看大图</el-button> -->
 	</div>
 </template>
 
 <script>
-	import {compress} from './compress.js'
+	import {
+		compress
+	} from './compress.js'
 	export default {
-		props: ['params'],
+		props: {
+			params: {
+				type: Object,
+			},
+			imageUrls: {
+				type: String,
+			}
+		},
 		data() {
 			return {
-				imageUrl: 'static/img/mrt.png',
-				uploadPath: this.$global.baseUrl + '/api/fileUpload/One', //上传地址
+				//imageUrl: 'static/img/mrt.png',
+				uploadPath: this.$global.baseUrl + '/api/Upload/PostUpload', //上传地址
 				data: {
-					
+
 				}, //
 				headers: {
 					//'token': JSON.parse(sessionStorage.getItem('uInfo')).token
@@ -27,41 +36,30 @@
 				isReadOnly: false,
 				imgName: '',
 				randId: Math.random(),
-				isloading: false
+				isloading: false,
+				imageUrl: ''
 			};
 		},
 		created() {
-			if (this.params.imgUrl != '') {
-				this.imageUrl = this.params.imgUrl;
-			}
-			//this.data.type = this.params.type
-			this.isReadOnly = this.params.isReadOnly == true ? true : false;
+			// if (this.params.imgUrl != '') {
+			// 	this.imageUrl = this.params.imgUrl;
+			// }
 		},
 		watch: {
-			imageUrl: {
-				deep: true, //深度监听对象里的值
-				handler: function(val, old) {
-					this.$emit('on-close', val);
+			imageUrls: {
+				immediate: true,
+				deep: true,
+				handler(val, old) {
+					console.log(val)
+					this.imageUrl = val
+					if(val){
+						var path = val.split('/').pop()
+						this.$emit('on-close', path);
+					}
 				}
 			}
 		},
 		methods: {
-			//搜索图片路径
-			/*getImgPath(img){
-			    let url = "/sysConfig/fileDownload";
-			    let data = {
-			        fileType:this.params.type,
-			        fileName:img
-			    }
-			    this.$api.get(url, data).then((res) => {
-			        if (res.ret == true) {
-			            this.imageUrl = res.data;
-			        }else{
-			            this.$message.error(res.message || res.msg);
-			        }
-			    });
-			},*/
-
 			//点击放大
 			blowUp() {
 				this.$previewRefresh();
@@ -69,11 +67,13 @@
 			},
 			//上传成功
 			handleAvatarSuccess(res, file) {
-				if (res.ret == true) {
+				if (res.status) {
 					this.isloading = false
-					this.imageUrl = res.data[0].url;
+					this.imageUrl = res.url;
+					var val = this.imageUrl.split('/').pop();
+					this.$emit('on-close', val);
 				} else {
-					this.$message.error(res.message || res.msg);
+					this.$message.error(res.Message);
 				}
 			},
 			beforeAvatarUpload(file) {
