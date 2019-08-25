@@ -1,6 +1,6 @@
 <template>
 	<div class="tabel-wrap">
-		<el-table ref="multipleTable" :data="tableData.list" stripe style="width:100%!important" v-loading="isloading"
+		<el-table ref="multipleTable" :data="tableData.records" stripe style="width:100%!important" v-loading="isloading"
 		 @selection-change="handleSelectionChange" @row-dblclick="handleGo">
 			<el-table-column type="selection" width="55" v-if="ischoose">
 			</el-table-column>
@@ -22,7 +22,7 @@
 		</el-table>
 		<div class="block page-div">
 			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="page.pageIndex"
-			 :page-sizes="[1,10, 20, 30, 40]" :page-size="page.pageNum" layout="total, sizes, prev, pager, next, jumper" :total="page.totalCount">
+			 :page-sizes="[5,10, 20, 30, 40]" :page-size="page.pageNum" layout="total, sizes, prev, pager, next, jumper" :total="page.totalCount">
 			</el-pagination>
 		</div>
 	</div>
@@ -62,17 +62,17 @@
 					currentPage: 1,
 					pageNum: 10,
 					pageIndex: 1,
-					totalPage: 10,
+					totalPage: 1,
 				},
 			}
 		},
 		watch: {
 			tableData(val) {
 				console.log(val)
-				this.page.currentPage = val.currentPage;
-				this.page.pageNum = val.everyPage;
-				this.page.totalPage = val.totalPage;
-				this.page.totalCount = val.totalCount
+				this.page.currentPage = val.current;
+				this.page.pageNum = val.size;
+				this.page.totalPage = val.pages;
+				this.page.totalCount = val.total
 			},
 
 		},

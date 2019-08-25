@@ -1,6 +1,16 @@
 <template>
 	<div>
 		<el-form :model="firstForm" :inline="true" ref="firstForm" label-width="200px" class="searchFrame query-form">
+			<el-col v-if="isUpload">
+				<el-form-item label="图片:">
+					<UploadImg :imageUrls="imageUrl" @on-close="getImg"></UploadImg>
+				</el-form-item>
+			</el-col>
+			<el-col v-if="isUploadMore">
+				<el-form-item label="图片:">
+					<UploadMore :fileLists="imgs" @sendUrl="getImgs"></UploadMore>
+				</el-form-item>
+			</el-col>
 			<el-col :span="24" v-for="(item,index) in firstFormObject" :key="index">
 				<el-form-item :label="item.label" :rules="item.rules" :class="item.type==4?'areablock':''" v-if="item.type!=0&&!item.isShow">
 					<el-input :disabled="item.isEdit" class="on_col" :class="item.error==true?'errorbox':''" v-if="item.type==1"
@@ -37,11 +47,6 @@
 					<p class="error_p" v-if="item.error==true">{{item.message}}</p>
 				</el-form-item>
 			</el-col>
-			<el-col v-if="isUpload">
-				<el-form-item label="图片:">
-					<UploadImg :imageUrls="imageUrl" @on-close="getImg"></UploadImg>
-				</el-form-item>
-			</el-col>
 			<DiaTag :dialogVisible="dialogVisible" :dataList="attrList" @tagList="getTagKey"></DiaTag>
 			<el-col :span="24">
 				<div class="return" style="display: flex;justify-content: center">
@@ -61,6 +66,7 @@
 	import Ueditor from 'components/common/comModule/ueditor'
 	import DiaTag from 'components/common/comModule/diaTag'
 	import UploadImg from 'components/common/comModule/uploadImg'
+	import UploadMore from 'components/common/comModule/uploadMore'
 	export default {
 		props: {
 			provinceCityOptions: {
@@ -100,11 +106,16 @@
 				type: Boolean,
 				default: false
 			},
+			isUploadMore:{
+				type: Boolean,
+				default: false
+			}
 		},
 		components: {
 			UploadImg,
 			Ueditor,
-			DiaTag
+			DiaTag,
+			UploadMore
 		},
 		data() {
 			return {
@@ -122,7 +133,9 @@
 				fileList: [],
 				fileLists: [],
 				imageUrl: '',
-				img:''
+				img:'',
+				imgs:'',
+				imgList:[]
 			}
 		},
 		watch: {
@@ -236,6 +249,10 @@
 			getImg(val) {
 				this.img = val
 			},
+			getImgs(val){
+				this.imgList = val
+				console.log(val)
+			},
 			handleRemove(file, fileList) { //移除图
 				this.fileLists = []
 				for (let i in fileList) {
@@ -302,6 +319,9 @@
 					var data = that.firstForms;
 					if (this.isUpload == true) {
 						data.pic = this.img
+					}
+					if(this.isUploadMore == true){
+						data.pic = this.imgList.toString()
 					}
 					this.$emit("trueAdd", data);
 				}

@@ -1,6 +1,6 @@
 <template>
 	<div class="container-table bg-white">
-		<PublicTable :firstFormObject="addform" @trueAdd="submits" @caValue="getAttr" :detailObj="detailData" :attrList="attrList"></PublicTable>
+		<PublicTable :firstFormObject="addform" @trueAdd="submits" @caValue="getAttr" :detailObj="detailData" :attrList="attrList" :isUploadMore="true"></PublicTable>
 	</div>
 </template>
 
@@ -36,7 +36,9 @@
 				data.categoryCode = data.categoryCode[0];
 				data.code = 0;
 				console.log(data);
-				let url = "/good";
+				let url = "/goods";
+				data.goodsPics = data.pic;
+				delete data.pic;
 				that.$api.posts(url, data).then((res) => {
 					console.log(res)
 					if (res.ret == true) {

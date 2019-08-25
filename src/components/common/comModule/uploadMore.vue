@@ -1,7 +1,7 @@
 <template>
 	<div class="upload-img">
 		<el-upload  :action="uploadPath" :on-preview="handlePreview" :data="data" :headers="headers"
-		 v-loading="isloading" name="imgfile" :on-remove="handleRemove" :file-list="fileList" :auto-upload="true" list-type="picture-card"
+		 v-loading="isloading" name="file" :on-remove="handleRemove" :file-list="fileList" :auto-upload="true" list-type="picture-card"
 		 :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
 			<i class="el-icon-plus"></i>
 		</el-upload>
@@ -19,7 +19,7 @@
 			return {
 				imageUrl: 'static/img/mrt.png',
 				fileList: [],
-				uploadPath: this.$global.baseUrl + '/api/fileUpload', //上传地址
+				uploadPath: this.$global.baseUrl + '/api/upload/UploadImg', //上传地址
 				headers: {
 					//'token': JSON.parse(sessionStorage.getItem('uInfo')).token
 				},
@@ -72,8 +72,9 @@
 				let that = this;
 				that.subList = [];
 				fileList.forEach(function(item) {
-					that.subList.push(item.response.data)
+					that.subList.push(item.response.data.split('/').pop())
 				})
+				console.log(that.subList)
 			},
 			handlePreview(file) {
 				console.log(file);
@@ -85,7 +86,8 @@
 				if (res.ret == true) {
 					this.isloading = false;
 					var obj = res.data.toString();
-					this.subList.push(obj)
+					this.subList.push(obj.split('/').pop())
+					console.log(this.subList)
 					//this.$emit("sendUrl", obj)
 				} else {
 					this.$message.error(res.message || res.msg);

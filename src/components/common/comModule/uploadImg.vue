@@ -1,6 +1,6 @@
 <template>
 	<div class="upload-img">
-		<el-upload v-loading="isloading" class="avatar-uploader" name="imgfile" :action="uploadPath" :disabled="isReadOnly"
+		<el-upload v-loading="isloading" class="avatar-uploader" name="file" :action="uploadPath" :disabled="isReadOnly"
 		 :data="data" :headers="headers" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
 			<img v-if="imageUrl" :src="imageUrl" class="avatar">
 			<i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -26,7 +26,7 @@
 		data() {
 			return {
 				//imageUrl: 'static/img/mrt.png',
-				uploadPath: this.$global.baseUrl + '/api/Upload/PostUpload', //上传地址
+				uploadPath: this.$global.baseUrl + '/api/upload/UploadImg', //上传地址
 				data: {
 
 				}, //
@@ -67,13 +67,14 @@
 			},
 			//上传成功
 			handleAvatarSuccess(res, file) {
-				if (res.status) {
+				console.log(res)
+				if (res.ret) {
 					this.isloading = false
-					this.imageUrl = res.url;
+					this.imageUrl = res.data;
 					var val = this.imageUrl.split('/').pop();
 					this.$emit('on-close', val);
 				} else {
-					this.$message.error(res.Message);
+					this.$message.error(res.message);
 				}
 			},
 			beforeAvatarUpload(file) {

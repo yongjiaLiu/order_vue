@@ -112,7 +112,7 @@
 					type: 'warning'
 				}).then(() => {
 					var state = row.status==1?"-1":"1";
-					var url = "/good/"+row.code+"/"+state;
+					var url = "/goods/"+row.code+"/"+state;
 					that.$api.put(url, {}).then((res) => {
 						if (res.ret) {
 							that.$message({
@@ -132,7 +132,7 @@
 				let that = this;
 				that.isLoading = true;
 				var data = this.query
-				var url = "/good/pageIndex/" + data.pageIndex + "/pageNum/" + data.pageNum
+				var url = "/goods/pageIndex/" + data.pageIndex + "/pageNum/" + data.pageNum
 				that.$api.get(url, data).then((res) => {
 					console.log(res)
 					if (res.ret == true) {
@@ -152,7 +152,7 @@
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
-					var url = "/good/"+row.code;
+					var url = "/goods/"+row.code;
 					that.$api.delete(url, {}).then((res) => {
 						if (res.ret) {
 							that.$message({
@@ -176,7 +176,7 @@
 			},
 			getType(){		//查询分类信息
 				let that = this;
-				var url = "/good/catogery/";
+				var url = "/category";
 				that.$api.get(url, {}).then((res) => {
 					console.log(res)
 					if (res.ret == true) {

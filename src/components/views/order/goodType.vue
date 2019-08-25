@@ -29,6 +29,9 @@
 					<el-form-item label="分类名称:" prop="name">
 						<el-input v-model.trim="addform.name" :disabled="isdisabled" oninput="this.value=this.value.replace(/\s+/g,'')"></el-input>
 					</el-form-item>
+					<el-form-item label="图标" v-if="addform.level==1">
+						<UploadImg :imageUrls="imageUrl" @on-close="getImg"></UploadImg>
+					</el-form-item>
 					<div class="return">
 						<el-button type="primary" v-preventReClick="3000" @click="submits('addform')">确 定</el-button>
 						<el-button @click="dialogVisible = false">取 消</el-button>
@@ -63,11 +66,13 @@
 </template>
 
 <script>
+	import UploadImg from 'components/common/comModule/uploadImg'
 	export default {
 		data() {
 			return {
 				sLoading: false, //搜索按钮loading
 				roleType: '',
+				imageUrl:'',
 				dialogVisible: false, //模态框是否显示
 				dialogVisibles:false,
 				orgName: "",
@@ -75,6 +80,7 @@
 				attrList:[],
 				loading: false,
 				isdisabled:false,
+				img:'',
 				dynamicTags:[],
 				defaultProps: {
 					children: 'categories',
@@ -106,6 +112,9 @@
 					],
 				}
 			}
+		},
+		components: {
+			UploadImg,
 		},
 		watch: {
 		  orgName(val) {
@@ -152,6 +161,10 @@
 			this.getAttr("")
 		},
 		methods: {
+			getImg(val){
+				let that = this;
+				console.log(val)
+			},
 			 remoteMethod(query) {
 				 console.log(query)
 				if (query !== '') {
@@ -272,11 +285,17 @@
 					}
 				});
 			},
+			getImg(val) {
+				this.img = val
+			},
 			add(){
 				let that = this;
 				var url = "/category";
 				console.log(this.addform)
 				var data = that.addform;
+				if(data.level==1){
+					data.pic = this.img
+				}
 				console.log(data)
 				if (data.code) {
 					console.log(data)

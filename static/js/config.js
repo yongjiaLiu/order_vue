@@ -2,7 +2,7 @@
     HOST:'http://192.168.1.53:8400'//服务器地址
 } */
 g = {
-	HOST: 'http://mumuyx.iok.la',//"http://192.168.1.166:8089", // //服务器地址
+	HOST: 'http://6atvxe.natappfree.cc',//"http://192.168.1.166:8089", // //服务器地址
 	sysName: "坦途户外运动-企业运营推广系统平台", //系统名称,
 	routerList: [{
 		icon: 'fa fa-user-o fa-fw',

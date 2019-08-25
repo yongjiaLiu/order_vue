@@ -114,9 +114,8 @@ export default {
 		return axios({
 			method: 'POST',
 			baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			data: formData,
-			timeout: 10000,
 			headers: {
 				'Content-type': 'multipart/form-data'
 			}
@@ -134,9 +133,8 @@ export default {
 		return axios({
 			method: 'post',
 			baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			data: qs.stringify(data),
-			timeout: 5000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'Content-Type': 'application/x-www-form-urlencoded; '
@@ -156,9 +154,8 @@ export default {
 		return axios({
 			method: 'post',
 			baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			data: data,
-			timeout: 50000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'deviceCode': 'A95ZEF1-47B5-AC90BF3',
@@ -178,9 +175,8 @@ export default {
 		return axios({
 			method: 'put',
 			baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			data: data,
-			timeout: 50000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'deviceCode': 'A95ZEF1-47B5-AC90BF3',
@@ -200,9 +196,8 @@ export default {
 		return axios({
 			method: 'get',
 			baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			params, // get 请求时带的参数
-			timeout: 30000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest'
 			}
@@ -222,9 +217,8 @@ export default {
 			method: 'put',
 			baseURL: baseUrl,
 			// baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			data:qs.stringify(params), // get 请求时带的参数
-			timeout: 5000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -245,9 +239,8 @@ export default {
 			method: 'delete',
 			baseURL: baseUrl,
 			// baseURL: baseUrl,
-			url: url + '?' + Math.random() * 100000,
+			url: url ,
 			params, // get 请求时带的参数
-			timeout: 5000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest'
 			}
